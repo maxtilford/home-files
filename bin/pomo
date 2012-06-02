@@ -1,0 +1,7 @@
+#!/bin/bash
+notify-send -u critical -i appointment -t 1200 "Pomodoro" "Get to work"
+
+sleep $(( 60 * 25 )) && 
+  notify-send -u critical -i appointment -t 0 "Pomodoro" "Stop and take a break" &
+
+exit 0

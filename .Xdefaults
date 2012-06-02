@@ -1,0 +1,6 @@
+URxvt*font:  *-dina-medium-r-*-*-16-*-*-*-*-*-*-*
+URxvt*background: #000000
+URxvt*foreground: #FFFFFF
+URxvt.perl-ext-common:  default,matcher
+URxvt.urlLauncher:      /usr/bin/chromium
+URxvt.matcher.button:   1

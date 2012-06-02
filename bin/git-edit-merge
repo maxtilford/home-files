@@ -1,0 +1,4 @@
+#!/bin/sh
+
+$EDITOR `git ls-files --unmerged | cut -f 2 | uniq`
+echo
