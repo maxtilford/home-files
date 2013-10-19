@@ -4,14 +4,25 @@
 ;; automatically ensure a final newline
 (setq require-final-newline t)
 
+(defun wrap-html-tag (tagName)
+  "Add a tag to beginning and ending of current word or text selection."
+  (interactive "sEnter tag name: ")
+  (let (p1 p2 inputText)
+    (if (use-region-p)
+        (progn
+          (setq p1 (region-beginning) )
+          (setq p2 (region-end) )
+          )
+      (let ((bds (bounds-of-thing-at-point 'symbol)))
+        (setq p1 (car bds) )
+        (setq p2 (cdr bds) ) ) )
 
-;;to set foreground color to white
-(set-foreground-color "white")
+    (goto-char p2)
+    (insert "</" tagName ">")
+    (goto-char p1)
+    (insert "<" tagName ">")
+    ))
 
-;;to set background color to black
-(set-background-color "black")
-
-(set-cursor-color "red")
 
 (menu-bar-mode -1)
 (setq line-number-mode t)
@@ -70,8 +81,18 @@
 ; position the habit graph on the agenda to the right of the default
 (setq org-habit-graph-column 50)
 
-
-
+(require 'php-mode)
+(defun wicked/php-mode-init ()
+   "Set some buffer-local variables."
+   (setq case-fold-search t)
+   (setq indent-tabs-mode t)
+   (setq fill-column 78)
+   (setq c-basic-offset 2)
+   (c-set-offset 'arglist-cont 0)
+   (c-set-offset 'arglist-intro '+)
+   (c-set-offset 'case-label 2)
+   (c-set-offset 'arglist-close 0))
+ (add-hook 'php-mode-hook 'wicked/php-mode-init)
 (iswitchb-mode 1)
 
 (add-to-list 'auto-mode-alist '("\\.\\(org\\|org_archive\\|txt\\)$" . org-mode))
@@ -141,12 +162,14 @@
 
 (tool-bar-mode -1)
 
-;; Put backup files (ie foo~) in one place too. (The backup-directory-alist
-;; list contains regexp=>directory mappings; filenames matching a regexp are
-;; backed up in the corresponding directory. Emacs will mkdir it if necessary.)
-(defvar backup-dir (concat "/tmp/emacs_backups/" (user-login-name) "/"))
-(setq backup-directory-alist (list (cons "." backup-dir)))
+(setq create-lockfiles nil)
 
+(custom-set-variables
+  '(auto-save-file-name-transforms '((".*" "~/.emacs.d/autosaves/\\1" t)))
+  '(backup-directory-alist '((".*" . "~/.emacs.d/backups/"))))
+
+;; create the autosave dir if necessary, since emacs won't.
+(make-directory "~/.emacs.d/autosaves/" t)
 
 
 
@@ -170,3 +193,12 @@
 (require 'coffee-mode)
 
 (put 'downcase-region 'disabled nil)
+
+(require 'color-theme)
+(require 'color-theme-solarized)
+
+(autoload 'markdown-mode "markdown-mode.el"
+   "Major mode for editing Markdown files" t)
+
+(setq auto-mode-alist
+   (cons '("\\.md" . markdown-mode) auto-mode-alist))

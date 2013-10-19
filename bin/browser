@@ -1,0 +1,2 @@
+#!/bin/zsh
+exec urxvtc -e w3m "$@"

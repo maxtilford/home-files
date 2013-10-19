@@ -1,0 +1,3 @@
+#!/bin/zsh
+START_COMMIT=$1
+FILE_TO_STEP=$2

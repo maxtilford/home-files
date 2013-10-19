@@ -2,7 +2,7 @@
 
 if [ -z $1 ]
 then
-    notify-send -t 0 $1
-else
     notify-send -t 0 "`cat /dev/stdin`"
+else
+    notify-send -t 0 $1
 fi

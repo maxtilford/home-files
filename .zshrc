@@ -1,5 +1,6 @@
 #!/bin/zsh
 source /etc/profile
+source ~/home-files/autojump.zsh
 setopt promptsubst
 
 autoload -U promptinit
@@ -9,7 +10,7 @@ prompt wunjo
 autoload -U compinit
 compinit
 
-#setopt correctall
+#setopt correctal
 
 export HISTSIZE=2000
 export HISTFILE="$HOME/.history"
@@ -20,7 +21,7 @@ setopt autocd
 
 export BROWSER=chromium
 export EDITOR=ed
-export PATH=$PATH:$HOME/bin:$HOME/.cabal/bin:$HOME/local/bin:$HOME/.node/bin:$HOME/work/android-sdk-linux/tools:$HOME/work/android-sdk-linux/platform-tools
+export PATH=$PATH:$HOME/bin:$HOME/.cabal/bin:$HOME/local/bin:$HOME/.node/bin:$HOME/work/android-sdk-linux/tools:$HOME/work/android-sdk-linux/platform-tools:/opt/phantomjs/bin
 export AUTOFEATURE=true
 unset RUBYOPT; env-update &>/dev/null
 
@@ -43,3 +44,4 @@ rmv()
         shift
     done
 }
+PATH="/usr/local/heroku/bin:$PATH"

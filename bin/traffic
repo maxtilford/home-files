@@ -1,0 +1,2 @@
+#!/bin/bash
+exec vlc http://video.dot.ca.gov/asx/D5-Morrissey-Blvd-at-1.asx

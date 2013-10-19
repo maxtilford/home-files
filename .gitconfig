@@ -6,7 +6,7 @@
 [branch]
   autosetuprebase = always
 [core]
-  editor = emacs -nw
+  editor = ~/bin/ed
   whitespace = trailing-space,space-before-tab
 [alias]
   git = !git

@@ -5,6 +5,6 @@ SYSTEM=`uname -sr`
 
 while :; do
     DATE=`date +"%a %B %d, %H:%M"`
-    echo "^fg(orange)$DATE^fg() "
+    echo "^fg(#fdf6e3)$DATE^fg() "
     sleep $UPDATE
-done | dzen2 -fn "-*-dina-medium-r-*-*-16-*-*-*-*-*-*-*" -bg '#222222' -fg '#aaaaaa' -w 840 -ta r -x 840
+done | dzen2 -fn "-*-dina-medium-r-*-*-16-*-*-*-*-*-*-*" -bg '#586e75' -fg '#fdf6e3' -w 840 -ta r -x 840
